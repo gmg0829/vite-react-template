@@ -1,90 +1,153 @@
-# React + Vite + Hono + Cloudflare Workers
+# Personal Blog
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template)
+A beautiful, modern personal blog built with React, TypeScript, and Cloudflare Workers.
 
-This template provides a minimal setup for building a React application with TypeScript and Vite, designed to run on Cloudflare Workers. It features hot module replacement, ESLint integration, and the flexibility of Workers deployments.
+![React](https://img.shields.io/badge/React-19.x-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![Vite](https://img.shields.io/badge/Vite-6.x-purple)
 
-![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public)
+## ✨ Features
 
-<!-- dash-content-start -->
+- 🎨 **Beautiful Dark Theme** - Purple-blue gradient with glass morphism effects
+- 📱 **Responsive Design** - Works on mobile, tablet, and desktop
+- 🔍 **Search & Filter** - Search articles and filter by tags
+- 📝 **Markdown Support** - Write posts in Markdown with syntax highlighting
+- 🚀 **Fast Performance** - Built on Cloudflare Workers edge network
+- 🌊 **Smooth Animations** - Page transitions and hover effects
 
-🚀 Supercharge your web development with this powerful stack:
+## 🛠️ Tech Stack
 
-- [**React**](https://react.dev/) - A modern UI library for building interactive interfaces
-- [**Vite**](https://vite.dev/) - Lightning-fast build tooling and development server
-- [**Hono**](https://hono.dev/) - Ultralight, modern backend framework
-- [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
+- **Frontend**: React 19, TypeScript, Vite 6
+- **Routing**: React Router DOM 7
+- **Animation**: Framer Motion
+- **Markdown**: react-markdown + react-syntax-highlighter
+- **Icons**: Lucide React
+- **Backend**: Hono (Cloudflare Workers)
+- **Deployment**: Cloudflare Pages
 
-### ✨ Key Features
+## 🚀 Getting Started
 
-- 🔥 Hot Module Replacement (HMR) for rapid development
-- 📦 TypeScript support out of the box
-- 🛠️ ESLint configuration included
-- ⚡ Zero-config deployment to Cloudflare's global network
-- 🎯 API routes with Hono's elegant routing
-- 🔄 Full-stack development setup
-- 🔎 Built-in Observability to monitor your Worker
+### Prerequisites
 
-Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
+- Node.js 18+
+- npm or yarn
 
-<!-- dash-content-end -->
-
-## Getting Started
-
-To start a new project with this template, run:
-
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/vite-react-template
-```
-
-A live deployment of this template is available at:
-[https://react-vite-template.templates.workers.dev](https://react-vite-template.templates.workers.dev)
-
-## Development
-
-Install dependencies:
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/gmg0829/vite-react-template.git
+cd vite-react-template
+
+# Install dependencies
 npm install
-```
 
-Start the development server with:
-
-```bash
+# Start development server
 npm run dev
 ```
 
-Your application will be available at [http://localhost:5173](http://localhost:5173).
-
-## Production
-
-Build your project for production:
+### Build
 
 ```bash
+# Build for production
 npm run build
-```
 
-Preview your build locally:
-
-```bash
+# Preview production build
 npm run preview
 ```
 
-Deploy your project to Cloudflare Workers:
+### Deploy to Cloudflare
 
 ```bash
-npm run build && npm run deploy
+npm run deploy
 ```
 
-Monitor your workers:
+## 📁 Project Structure
 
-```bash
-npx wrangler tail
+```
+src/
+├── react-app/
+│   ├── components/     # Reusable components
+│   │   ├── Layout/    # Navbar, Footer, Layout
+│   │   └── Post/      # PostCard, PostList
+│   ├── pages/         # Page components
+│   │   ├── Home/      # Landing page
+│   │   ├── BlogList/  # Articles list
+│   │   ├── PostDetail/# Article detail
+│   │   ├── About/     # About page
+│   │   ├── Tags/      # Tags list
+│   │   └── NotFound/  # 404 page
+│   ├── data/          # Static data (posts, authors)
+│   ├── styles/        # Global CSS
+│   └── types/         # TypeScript types
+└── worker/            # Cloudflare Worker API
 ```
 
-## Additional Resources
+## 🎯 Routes
 
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://reactjs.org/)
-- [Hono Documentation](https://hono.dev/)
+| Path | Description |
+|------|-------------|
+| `/` | Home - Hero + Latest articles |
+| `/blog` | All articles with search |
+| `/post/:slug` | Article detail |
+| `/about` | About the author |
+| `/tags` | All tags |
+| `/tags/:tag` | Articles by tag |
+
+## 📝 Writing Posts
+
+Add new posts in `src/react-app/data/posts.ts`:
+
+```typescript
+{
+  slug: 'my-new-post',
+  title: 'My New Post Title',
+  description: 'A brief description...',
+  content: '## Introduction\n\nYour markdown content here...',
+  date: '2024-01-15',
+  tags: ['React', 'TypeScript'],
+  readingTime: 10,
+  views: 0,
+  author: defaultAuthor,
+}
+```
+
+## 🎨 Customization
+
+### Colors & Theme
+
+Edit CSS variables in `src/react-app/styles/globals.css`:
+
+```css
+:root {
+  --primary: #6366f1;
+  --accent: #f472b6;
+  --bg-primary: #0a0a0f;
+  /* ... */
+}
+```
+
+### Author Info
+
+Update in `src/react-app/data/authors.ts`:
+
+```typescript
+export const defaultAuthor: Author = {
+  name: 'Your Name',
+  avatar: 'https://...',
+  bio: 'Your bio...',
+  github: 'https://github.com/...',
+  // ...
+};
+```
+
+## 📄 License
+
+MIT License - feel free to use this project for your own blog!
+
+## 🙏 Acknowledgments
+
+- [React](https://react.dev)
+- [Vite](https://vitejs.dev)
+- [Cloudflare Workers](https://workers.cloudflare.com)
+- [Hono](https://hono.dev)
