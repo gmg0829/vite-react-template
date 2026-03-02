@@ -12,9 +12,16 @@
 		"publish": true
 	},
 	"dependencies": {
+		"@types/react-syntax-highlighter": "^15.5.13",
+		"date-fns": "^4.1.0",
+		"framer-motion": "^12.34.3",
 		"hono": "4.11.1",
+		"lucide-react": "^0.576.0",
 		"react": "19.2.1",
-		"react-dom": "19.2.1"
+		"react-dom": "19.2.1",
+		"react-markdown": "^10.1.0",
+		"react-router-dom": "^7.13.1",
+		"react-syntax-highlighter": "^16.1.1"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "1.15.3",
